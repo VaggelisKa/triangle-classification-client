@@ -1,0 +1,40 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "google"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "semi": 1,
+        "linebreak-style": 0,
+        "object-curly-spacing": 0,
+        "no-extra-semi": 1,
+        "indent": 1,
+        "no-var": 2,
+        "comma-dangle": 0,
+        "spaced-comment": 1,
+        "require-jsdoc": 0,
+        "camelcase": 0,
+        "operator-linebreak": 0,
+        "no-unused-vars": 1,
+        "no-trailing-spaces": 1,
+        "max-len": 0,
+        "arrow-parens": 0
+    }
+}
