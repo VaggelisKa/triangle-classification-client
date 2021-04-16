@@ -1,12 +1,18 @@
-import React, { FC } from 'react';
+import React, { FC, lazy, Suspense } from 'react';
 import './App.css';
 
-import Homepage from './pages/home-page/home-page.component';
+import { Route, Switch } from 'react-router-dom';
+
+const HomePage = lazy(() => import('./pages/home-page/home-page.component'));
 
 const App: FC = () => {
   return (
     <div className="App">
-      <Homepage />
+      <Switch>
+        <Suspense fallback={<>Loading</>} >
+          <Route exact path="/" component={HomePage} />
+        </Suspense>
+      </Switch>
     </div>
   );
 };
