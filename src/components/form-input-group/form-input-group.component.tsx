@@ -1,28 +1,30 @@
 import React, { FC } from 'react';
+import { Point } from '../../models/Point';
 import './form-input-group.styles.scss';
 
 interface Props {
   xAxisChangeHandler: (event: any) => void;
   yAxisChangeHandler: (event: any) => void;
-  otherProps?: any
+  pointValue: Point
 }
 
-const FormInputGroup: FC<Props> = ({ xAxisChangeHandler, yAxisChangeHandler, ...otherProps }: Props) => {
+const FormInputGroup: FC<Props> = ({ xAxisChangeHandler, yAxisChangeHandler, pointValue }: Props) => {
   return (
     <div className="input-container">
       <label className="input-label">Add Point</label>
       <input
         type="number"
         placeholder="X axis"
-        min={0}
+        step="0.1"
+        min={-100}
         max={100}
         onChange={xAxisChangeHandler}
-        {...otherProps}
       />
       <input
         type="number"
+        step="0.1"
         placeholder="Y axis"
-        min={0}
+        min={-100}
         max={100}
         onChange={yAxisChangeHandler}
       />

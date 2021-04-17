@@ -1,4 +1,4 @@
 export interface Point {
-  xAxis: number | null;
-  yAxis: number | null;
+  xAxis: number | undefined;
+  yAxis: number | undefined;
 }
