@@ -2,6 +2,7 @@ import React, { FC, useRef } from 'react';
 import { animated, useSpring } from 'react-spring';
 import './modal.styles.scss';
 import { MdClose } from 'react-icons/md';
+import Canvas from '../canvas/canvas.component';
 
 interface Props {
   isVisible: boolean,
@@ -46,8 +47,7 @@ const Modal: FC<Props> = ({isVisible, setShowModal, triangle}: Props) => {
                   </p>
                 </div>
                 <div className="modal-content">
-                  <h1>hello</h1>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias minus harum id culpa! Hic iure voluptates, iusto, numquam reprehenderit fuga nobis, magnam laborum enim rem quos alias. Esse, rem ipsum.</p>
+                  <Canvas p1={triangle.p1} p2={triangle.p2} p3={triangle.p3} />
                 </div>
                 <MdClose onClick={() => setShowModal((prev: any) => !prev)} aria-label="Close Modal" className="close-icon" />
               </div>

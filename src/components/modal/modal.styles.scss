@@ -36,23 +36,11 @@
         font-size: 2rem;
         color: orangered;
       }
-      
-      p {
-      }
     }
     
     .modal-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      line-height: 1.8;
       color: #141414;
-    
-      p {
-        margin-bottom: 1rem;
-        padding: 0 5px 0;
-      }
+      text-align: center;
     }
     
     .close-icon {
