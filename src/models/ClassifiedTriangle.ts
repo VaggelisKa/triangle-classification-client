@@ -6,5 +6,6 @@ export interface ClassifiedTriangle {
   date: number;
   p1: Point;
   p2: Point;
-  p3: Point
+  p3: Point;
+  triangleClass: string;
 }
