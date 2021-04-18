@@ -40,9 +40,8 @@ const HomePage: FC = () => {
     if (data) {
       setTriangleData(data);
       setShowModal(true);
+      clearHomepageInputState(setFirstPointValue, setSecondPointValue, setThirdPointValue);
     }
-
-    clearHomepageInputState(setFirstPointValue, setSecondPointValue, setThirdPointValue);
   };
 
 
