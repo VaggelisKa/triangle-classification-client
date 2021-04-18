@@ -1,4 +1,4 @@
-import React, { FC, lazy, Suspense } from 'react';
+import React, { FC, lazy, Suspense, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -12,6 +12,10 @@ const HomePage = lazy(() => import('./pages/home-page/home-page.component'));
 const HistoryPage = lazy(() => import('./pages/history-page/history-page.component'));
 
 const App: FC = () => {
+  useEffect(() => {
+    document.title = 'Triangle Classifier';
+  }, []);
+
   return (
     <div className="App">
       <Header />
