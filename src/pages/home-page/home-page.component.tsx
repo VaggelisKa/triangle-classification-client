@@ -12,11 +12,13 @@ import ErrorDisplay from '../../components/error-display/error-display.component
 import CustomButton from '../../components/custom-button/custom-button.component';
 import Modal from '../../components/modal/modal.component';
 import Spinner from '../../components/spinner/spinner.component';
+import formatInput from '../../helpers/formatInput';
+import clearHomepageInputState from '../../helpers/clearInputState';
 
 const HomePage: FC = () => {
   const [firstPointValue, setFirstPointValue] = useState<Point>({ xAxis: undefined, yAxis: undefined });
   const [secondPointValue, setSecondPointValue] = useState<Point>({ xAxis: undefined, yAxis: undefined });
-  const [thirdPointValue, setThirdPointValue] = useState<Point>({ xAxis: undefined, yAxis: undefined });
+  const [thirdPointValue, setThirdPointValue] = useState<Point>({ xAxis: undefined, yAxis: undefined});
   const [triangleData, setTriangleData] = useState<ClassifiedTriangle>();
   const [errorMessage, setErrorMessage] = useState(null);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -40,12 +42,14 @@ const HomePage: FC = () => {
       if (res.data) {
         setTriangleData(res.data);
         setShowModal(true);
+        clearHomepageInputState(setFirstPointValue, setSecondPointValue, setThirdPointValue);
       }
     } catch (error) {
       setLoading(false);
-      setErrorMessage(error.response?.data?.message);
+      setErrorMessage(error.response?.data?.message || 'Something went wrong, try refreshing the page');
     }
   };
+
 
   return (
     loading ? <Spinner /> : (
@@ -55,27 +59,27 @@ const HomePage: FC = () => {
           <div className="form-group">
             <FormInputGroup
               pointValue={firstPointValue}
-              xAxisChangeHandler={event => setFirstPointValue({...firstPointValue, xAxis: +event.target.value})}
-              yAxisChangeHandler={event => setFirstPointValue({...firstPointValue, yAxis: +event.target.value})}
+              xAxisChangeHandler={event => setFirstPointValue({...firstPointValue, xAxis: formatInput(event.target.value)})}
+              yAxisChangeHandler={event => setFirstPointValue({...firstPointValue, yAxis: formatInput(event.target.value)})}
             />
           </div>
           <div className="form-group">
             <FormInputGroup
               pointValue={secondPointValue}
-              xAxisChangeHandler={event => setSecondPointValue({...secondPointValue, xAxis: +event.target.value})}
-              yAxisChangeHandler={event => setSecondPointValue({...secondPointValue, yAxis: +event.target.value})}
+              xAxisChangeHandler={event => setSecondPointValue({...secondPointValue, xAxis: formatInput(event.target.value)})}
+              yAxisChangeHandler={event => setSecondPointValue({...secondPointValue, yAxis: formatInput(event.target.value)})}
             />
           </div>
           <div className="form-group">
             <FormInputGroup
               pointValue={thirdPointValue}
-              xAxisChangeHandler={event => setThirdPointValue({...thirdPointValue, xAxis: +event.target.value})}
-              yAxisChangeHandler={event => setThirdPointValue({...thirdPointValue, yAxis: +event.target.value})}
+              xAxisChangeHandler={event => setThirdPointValue({...thirdPointValue, xAxis: formatInput(event.target.value)})}
+              yAxisChangeHandler={event => setThirdPointValue({...thirdPointValue, yAxis: formatInput(event.target.value)})}
             />
           </div>
           <CustomButton
             isDisabled={!isPointInputValid(firstPointValue, secondPointValue, thirdPointValue)}
-            text="ClassifyTriangle"
+            text="Classify Triangle"
           />
           {
             errorMessage && <ErrorDisplay>{errorMessage!}</ErrorDisplay>

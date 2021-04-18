@@ -2,7 +2,7 @@ import React, { FC, lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
-import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/themes/arya-orange/theme.css';
 import 'primereact/resources/primereact.min.css';
 
 import Header from './components/header/header.component';

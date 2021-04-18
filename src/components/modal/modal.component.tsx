@@ -36,15 +36,11 @@ const Modal: FC<Props> = ({isVisible, setShowModal, triangle}: Props) => {
               <div className="modal-wrapper">
                 <div className="modal-text">
                   <h2>{triangle?.triangleClass}</h2>
-                  <p>
-                    {
-                      `
-                        Point: (${triangle?.p1?.xAxis}, ${triangle?.p1?.yAxis})
-                        Point: (${triangle?.p2?.xAxis}, ${triangle?.p2?.yAxis})
-                        Point: (${triangle?.p3?.xAxis}, ${triangle?.p3?.yAxis})
-                      `
-                    }
-                  </p>
+                  <pre>
+                    <p>{`Point: (${triangle?.p1?.xAxis}, ${triangle?.p1?.yAxis})` }</p>
+                    <p>{`Point: (${triangle?.p2?.xAxis}, ${triangle?.p2?.yAxis})` }</p>
+                    <p>{`Point: (${triangle?.p3?.xAxis}, ${triangle?.p3?.yAxis})` }</p>
+                  </pre>
                 </div>
                 <div className="modal-content">
                   <Canvas p1={triangle.p1} p2={triangle.p2} p3={triangle.p3} />

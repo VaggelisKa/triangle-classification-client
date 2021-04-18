@@ -47,7 +47,7 @@ const Datatable: FC<Props> = ({ listOfTriangles }: Props) => {
           style={{backgroundColor: 'inherit', border: 'none', cursor: 'pointer'}}
           onClick={() => openModal(rowData)}
         >
-          <FaEye size="25" />
+          <FaEye size="25" color="white" />
         </button>
       </>
     );
