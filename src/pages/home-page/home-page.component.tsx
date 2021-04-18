@@ -42,6 +42,8 @@ const HomePage: FC = () => {
       setShowModal(true);
       clearHomepageInputState(setFirstPointValue, setSecondPointValue, setThirdPointValue);
     }
+
+    clearHomepageInputState(setFirstPointValue, setSecondPointValue, setThirdPointValue);
   };
 
 
