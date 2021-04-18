@@ -11,12 +11,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Add Triangle Points And Classify!
 
-![alt text]('./screenshots/Homescreen-screenshot.png')
+![alt text](./screenshots/Homescreen-screenshot.png)
 
 ## Visualize Your Results!
 
-![alt text]('./screenshots/Visualize-screenshot.png')
+![alt text](./screenshots/Visualize-screenshot.png)
 
 ## Keep Track Of Your Search History
 
-![alt text]('./screenshots/table-screenshot.png')
+![alt text](./screenshots/table-screenshot.png)
