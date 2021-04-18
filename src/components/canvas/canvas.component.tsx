@@ -33,7 +33,7 @@ const Canvas: FC<Props> = ({ p1, p2, p3 }: Props) => {
   }, [draw]);
 
   return (
-    <canvas ref={canvasRef} width={500} height={400} style={{width: '100%', textAlign: 'center'}} />
+    <canvas ref={canvasRef} width={500} height={400} />
   );
 };
 

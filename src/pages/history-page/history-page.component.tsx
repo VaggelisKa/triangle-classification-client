@@ -31,7 +31,7 @@ const HistoryPage: FC = () => {
     loading ? <Spinner /> : (
       listOfTriangles.length > 0 ? (
         <>
-          <h3 style={{textAlign: 'center'}}>Past Search History</h3>
+          <h3 className="history-page-title">Past Search History</h3>
           <div className="data-table">
             <Datatable listOfTriangles={listOfTriangles} />
           </div>
@@ -39,7 +39,7 @@ const HistoryPage: FC = () => {
       ) : (
         error ? <ErrorDisplay>{error!}</ErrorDisplay> : (
           <p
-            style={{textAlign: 'center', paddingTop: 50}}
+            className="empty-list-text"
           >
             No searches available to display! Try adding some...
           </p>

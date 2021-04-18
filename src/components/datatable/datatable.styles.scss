@@ -2,4 +2,10 @@
   margin: 75px 60px 100px;
   overflow: scroll;
   height: 73vh;
+
+  .visualize-button {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+  }
 }

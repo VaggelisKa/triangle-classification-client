@@ -44,7 +44,6 @@ const Datatable: FC<Props> = ({ listOfTriangles }: Props) => {
         <button
           type="button"
           className="visualize-button"
-          style={{backgroundColor: 'inherit', border: 'none', cursor: 'pointer'}}
           onClick={() => openModal(rowData)}
         >
           <FaEye size="25" color="white" />
