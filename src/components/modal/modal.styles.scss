@@ -32,6 +32,15 @@
       border-radius: 10px 0 0 10px;
       background: black;
 
+      .pro-tip-text {
+        position: absolute;
+        padding-bottom: 300px;
+
+        .pro-tip-subtitle {
+          padding: 0 5px;
+        }
+      }
+
       h2 {
         font-size: 2rem;
         color: orangered;

@@ -2,6 +2,7 @@ import React, { FC, useRef } from 'react';
 import { animated, useSpring } from 'react-spring';
 import './modal.styles.scss';
 import { MdClose } from 'react-icons/md';
+import { HiOutlineLightBulb } from 'react-icons/hi';
 import Canvas from '../canvas/canvas.component';
 
 interface Props {
@@ -35,6 +36,12 @@ const Modal: FC<Props> = ({isVisible, setShowModal, triangle}: Props) => {
             <animated.div style={animation}>
               <div className="modal-wrapper">
                 <div className="modal-text">
+                  <div className="pro-tip-text">
+                    <p>
+                      Pro Tip <span><HiOutlineLightBulb size="20" color="yellow" /></span>
+                    </p>
+                    <p className="pro-tip-subtitle">Try larger input numbers for better visualization results!</p>
+                  </div>
                   <h2>{triangle?.triangleClass}</h2>
                   <pre>
                     <p>{`Point: (${triangle?.p1?.xAxis}, ${triangle?.p1?.yAxis})` }</p>
