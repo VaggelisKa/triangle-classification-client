@@ -1,31 +1,25 @@
 import React, { FC, useEffect, useState } from 'react';
 import './history-page.styles.scss';
-import axios from 'axios';
 
 import { ClassifiedTriangle } from '../../models/ClassifiedTriangle';
 import Spinner from '../../components/spinner/spinner.component';
 import Datatable from '../../components/datatable/datatable.component';
+import useApiRequest from '../../hooks/useApiRequest';
+import ErrorDisplay from '../../components/error-display/error-display.component';
 
 const HistoryPage: FC = () => {
   const [listOfTriangles, setListOfTriangles] = useState<ClassifiedTriangle[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState(null);
+  const { error, loading, sendRequest } = useApiRequest({
+    reqType: 'GET',
+    url: 'http://localhost:4000/api/triangles/pastSearches',
+    body: {}
+  });
 
   const getListFromDB = async () => {
-    try {
-      setError(null);
-      setLoading(true);
+    const data = await sendRequest();
 
-      const res = await axios.get('http://localhost:4000/api/triangles/pastSearches');
-
-      setLoading(false);
-
-      if (res.data) {
-        setListOfTriangles(res.data);
-      }
-    } catch (error) {
-      setLoading(false);
-      setError(error.response?.data?.message || 'Unexpected Error, try refreshing');
+    if (data) {
+      setListOfTriangles(data);
     }
   };
 
@@ -36,15 +30,20 @@ const HistoryPage: FC = () => {
   return (
     loading ? <Spinner /> : (
       listOfTriangles.length > 0 ? (
-        <div className="data-table">
-          <Datatable listOfTriangles={listOfTriangles} />
-        </div>
+        <>
+          <h3 style={{textAlign: 'center'}}>Past Search History</h3>
+          <div className="data-table">
+            <Datatable listOfTriangles={listOfTriangles} />
+          </div>
+        </>
       ) : (
-        <p
-          style={{textAlign: 'center', paddingTop: 50}}
-        >
-          No searches available to display! Try adding some...
-        </p>
+        error ? <ErrorDisplay>{error!}</ErrorDisplay> : (
+          <p
+            style={{textAlign: 'center', paddingTop: 50}}
+          >
+            No searches available to display! Try adding some...
+          </p>
+        )
       )
     )
   );

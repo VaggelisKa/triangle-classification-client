@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react';
-import axios from 'axios';
 import './home-page.styles.scss';
 
 import isPointInputValid from '../../helpers/isInputValid';
@@ -14,39 +13,34 @@ import Modal from '../../components/modal/modal.component';
 import Spinner from '../../components/spinner/spinner.component';
 import formatInput from '../../helpers/formatInput';
 import clearHomepageInputState from '../../helpers/clearInputState';
+import useApiRequest from '../../hooks/useApiRequest';
 
 const HomePage: FC = () => {
   const [firstPointValue, setFirstPointValue] = useState<Point>({ xAxis: undefined, yAxis: undefined });
   const [secondPointValue, setSecondPointValue] = useState<Point>({ xAxis: undefined, yAxis: undefined });
   const [thirdPointValue, setThirdPointValue] = useState<Point>({ xAxis: undefined, yAxis: undefined});
   const [triangleData, setTriangleData] = useState<ClassifiedTriangle>();
-  const [errorMessage, setErrorMessage] = useState(null);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
+
+  const { error, loading, sendRequest } = useApiRequest({
+    reqType: 'POST',
+    url: 'http://localhost:4000/api/triangles/classify',
+    body: {
+      p1: firstPointValue,
+      p2: secondPointValue,
+      p3: thirdPointValue
+    }
+  });
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
 
-    try {
-      setErrorMessage(null);
-      setLoading(true);
+    const data = await sendRequest();
 
-      const res = await axios.post('http://localhost:4000/api/triangles/classify', {
-        p1: firstPointValue,
-        p2: secondPointValue,
-        p3: thirdPointValue
-      });
-
-      setLoading(false);
-
-      if (res.data) {
-        setTriangleData(res.data);
-        setShowModal(true);
-        clearHomepageInputState(setFirstPointValue, setSecondPointValue, setThirdPointValue);
-      }
-    } catch (error) {
-      setLoading(false);
-      setErrorMessage(error.response?.data?.message || 'Something went wrong, try refreshing the page');
+    if (data) {
+      setTriangleData(data);
+      setShowModal(true);
+      clearHomepageInputState(setFirstPointValue, setSecondPointValue, setThirdPointValue);
     }
   };
 
@@ -82,7 +76,7 @@ const HomePage: FC = () => {
             text="Classify Triangle"
           />
           {
-            errorMessage && <ErrorDisplay>{errorMessage!}</ErrorDisplay>
+            error && <ErrorDisplay>{error!}</ErrorDisplay>
           }
         </form>
         <Modal
