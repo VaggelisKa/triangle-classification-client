@@ -13,8 +13,9 @@ const FormInputGroup: FC<Props> = ({ xAxisChangeHandler, yAxisChangeHandler, poi
     <div className="input-container">
       <label className="input-label">Add Point</label>
       <input
+        defaultValue={''}
         type="number"
-        value={pointValue.xAxis || ''}
+        value={pointValue.xAxis}
         placeholder="X axis"
         step="0.1"
         min={-200}
@@ -22,7 +23,8 @@ const FormInputGroup: FC<Props> = ({ xAxisChangeHandler, yAxisChangeHandler, poi
         onChange={xAxisChangeHandler}
       />
       <input
-        value={pointValue.yAxis || ''}
+        defaultValue={''}
+        value={pointValue.yAxis}
         type="number"
         step="0.1"
         placeholder="Y axis"
