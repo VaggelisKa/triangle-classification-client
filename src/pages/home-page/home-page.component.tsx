@@ -43,7 +43,7 @@ const HomePage: FC = () => {
       }
     } catch (error) {
       setLoading(false);
-      setErrorMessage(error.response.data.message);
+      setErrorMessage(error.response?.data?.message);
     }
   };
 

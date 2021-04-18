@@ -6,8 +6,17 @@
   margin-bottom: 25px;
 
   .logo-container {
-    font-weight: bold;
-    font-size: 1.4rem;
+    width: 60px;
+    height: 55px;
+    
+    .logo {
+      fill: white;
+      transition: transform .85s ease-in-out;
+
+      &:hover {
+        transform: rotate(-180deg);
+      }
+    }
   }
 
   .options-container {

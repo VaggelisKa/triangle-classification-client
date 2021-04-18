@@ -16,16 +16,16 @@ const FormInputGroup: FC<Props> = ({ xAxisChangeHandler, yAxisChangeHandler, poi
         type="number"
         placeholder="X axis"
         step="0.1"
-        min={-100}
-        max={100}
+        min={-200}
+        max={200}
         onChange={xAxisChangeHandler}
       />
       <input
         type="number"
         step="0.1"
         placeholder="Y axis"
-        min={-100}
-        max={100}
+        min={-200}
+        max={200}
         onChange={yAxisChangeHandler}
       />
     </div>

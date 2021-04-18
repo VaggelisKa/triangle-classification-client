@@ -13,12 +13,14 @@ const Canvas: FC<Props> = ({ p1, p2, p3 }: Props) => {
 
   const draw = (ctx: any) => {
     ctx.fillStyle = '#00000';
+    ctx.lineWidth = 1;
 
     ctx.beginPath();
-    ctx.lineWidth = 4;
+
     ctx.moveTo(p1.xAxis! + 200, p1.yAxis! + 200);
-    ctx.lineTo(p2.xAxis! + 200, p2.yAxis! + 200);
-    ctx.lineTo(p3.xAxis! + 200, p3.yAxis! + 200);
+    ctx.lineTo(p3.xAxis! + 100, p3.yAxis! + 100);
+    ctx.lineTo(p2.xAxis! + 100, p2.yAxis! + 100);
+
     ctx.closePath();
     ctx.stroke();
   };
@@ -31,7 +33,7 @@ const Canvas: FC<Props> = ({ p1, p2, p3 }: Props) => {
   }, [draw]);
 
   return (
-    <canvas ref={canvasRef} width={370} height={500} style={{width: '100%', textAlign: 'center'}} />
+    <canvas ref={canvasRef} width={400} height={400} style={{width: '100%', textAlign: 'center'}} />
   );
 };
 
